@@ -1,0 +1,21 @@
+#define led 13
+#define rain 8
+int val; // will store the digital value of the raindrop sensor
+void setup()
+{
+	pinMode(led,OUTPUT);
+	pinMode(rain,INPUT);
+}
+
+void loop()
+{
+	val = digitalRead(rain);
+	while(val == HIGH) //LOW is 0 and HIGH is 1, LOW means there is rain and HIGH means there is no rain
+	{
+		digitalWrite(led,HIGH); // If there is no rain we are just lighting up the LED, later we can make it to pump water
+		val = digitalRead(rain);
+		delay(500);
+	}
+	digidtalWrite(led,LOW);
+	delay(500)
+}
